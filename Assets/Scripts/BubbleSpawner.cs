@@ -6,7 +6,6 @@ public class BubbleSpawner : MonoBehaviour {
     public GameObject[] balls;
     public float spawnTime;
     public float maxXpos;
-    public float maxYpos;
     // Use this for initialization
     void Start () {
         StartSpawingBalls();
@@ -30,6 +29,5 @@ public class BubbleSpawner : MonoBehaviour {
     {
         int rand = Random.Range(0, 3);
         Instantiate(balls[rand], new Vector3( Random.Range(-maxXpos, maxXpos), transform.position.y, 0), Quaternion.identity);
-        Instantiate(balls[rand], new Vector3(transform.position.x, Random.Range(-maxYpos, maxYpos), 0), Quaternion.identity);
     }
 }

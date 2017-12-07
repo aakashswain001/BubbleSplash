@@ -34,6 +34,6 @@ public class HandTouch : MonoBehaviour {
         {
             Destroy(col.gameObject);
         }
-
+        ScoreManager.instance.incrementScore();
     }
 }

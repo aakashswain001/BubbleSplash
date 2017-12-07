@@ -8,7 +8,12 @@ public class UiManager : MonoBehaviour {
     public static UiManager instance;
     public Text scoreText;
     public GameObject GameOverPanel;
-   // public Image background;
+    public GameObject PausePanel;
+    public GameObject PauseButton;
+    public GameObject GameoverScoreText, NewHighscoreText;
+
+    public GameObject life1, life2, life3;
+    // public Image background;
 
 
 
@@ -27,20 +32,68 @@ public class UiManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        scoreText.text = ScoreManager.instance.Score.ToString();
+        if (!gameManager.instance.gameOver) {
+            scoreText.text = ScoreManager.instance.Score.ToString();
+        }
     }
     public void GameOver()
     {
+        scoreText.gameObject.SetActive(false);
+        PauseButton.SetActive(false);
         GameOverPanel.SetActive(true);
-       // background.SetLayoutDirty();
+        GameoverScoreText.GetComponent<Text>().text = ScoreManager.instance.Score.ToString();
+        if (ScoreManager.instance.isHighScore) {
+            NewHighscoreText.SetActive(true);
+        }
+        // background.SetLayoutDirty();
     }
     public void Replay()
     {
+        if (Time.timeScale == 0) {
+            Time.timeScale = 1;
+        }
+        PauseButton.SetActive(true);
+        gameManager.instance.gameOver = false;
         SceneManager.LoadScene("BubbleSplash");
     }
     public void OnApplicationQuit()
     {
         Application.Quit();
+    }
+    public void PauseGame() {
+        PauseButton.SetActive(false);
+        Time.timeScale = 0;
+        PausePanel.SetActive(true);
+    }
+    public void PlayPausedGame() {
+        PauseButton.SetActive(true);
+        Time.timeScale = 1;
+        PausePanel.SetActive(false);
+    }
+    public void updateLifes() {
+        int lifes = LifeManager.instance.lifes;
+        if (lifes == 3)
+        {
+            life1.SetActive(true);
+            life2.SetActive(true);
+            life3.SetActive(true);
+        }
+        else if (lifes == 2)
+        {
+            life1.SetActive(false);
+            life2.SetActive(true);
+            life3.SetActive(true);
+        }
+        else if (lifes == 1)
+        {
+            life1.SetActive(false);
+            life2.SetActive(false);
+            life3.SetActive(true);
+        }
+        else if (lifes == 0) {
+            life1.SetActive(false);
+            life2.SetActive(false);
+            life3.SetActive(false);
+        }
     }
 }

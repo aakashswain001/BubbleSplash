@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class gameManager : MonoBehaviour {
     public static gameManager instance;
-    bool gameOver;
+    public bool gameOver;
 
     private void Awake()
     {
@@ -22,12 +22,11 @@ public class gameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        gameOver = true;
+        gameOver = false;
 	}
     public void gameStart()
     {
         GameObject.Find("BubbleSpawner").GetComponent<BubbleSpawner>().StartSpawingBalls();
-
     }
 	
 	// Update is called once per frame
@@ -36,10 +35,8 @@ public class gameManager : MonoBehaviour {
 	}
     public void GameOver()
     {  //stop score not added
-        gameOver = false;
-
-        GameObject.Find("BubbleSpawner").GetComponent<BubbleSpawner>().StopSpawningBalls();
-        
+        gameOver = true;
+        GameObject.Find("BubbleSpawner").GetComponent<BubbleSpawner>().StopSpawningBalls();      
         UiManager.instance.GameOver();
     }
 }
