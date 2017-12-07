@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 public class BallController : MonoBehaviour {
     Rigidbody2D rb;
     float speed=2;
-	bool isout=false; 
+    public bool gameOver;
 	// Use this for initialization
 	void Start () {
+        gameOver = false;
         rb = GetComponent<Rigidbody2D>();
 
         MoveBall();
@@ -21,19 +22,24 @@ public class BallController : MonoBehaviour {
     {
         rb.velocity = new Vector2(0, -speed);
     }
+    public void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.gameObject.tag == "BelowBar")
+        {
+            gameOver = true;
+            gameManager.instance.GameOver();
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "BelowBar")
+        if (col.gameObject.tag == "BelowBar" && !gameOver)
         {
             Destroy(gameObject);
-			isout = true;
-
-			if (isout == true) 
-			{
-				SceneManager.LoadScene ("bubble");
-				
-			        }
+            gameOver = true;
+            gameManager.instance.GameOver();
+            
+			
     }
 }
 }
