@@ -31,8 +31,7 @@ public class gameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+    }
     public void GameOver()
     {  //stop score not added
         gameOver = true;
