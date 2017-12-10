@@ -13,7 +13,7 @@ public class LifeManager : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-        lifes = 0;
+        lifes = 3;
         UiManager.instance.updateLifes();
 	}
 	

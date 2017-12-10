@@ -11,6 +11,7 @@ public class UiManager : MonoBehaviour {
     public GameObject PausePanel;
     public GameObject PauseButton;
     public GameObject GameoverScoreText, NewHighscoreText;
+   
 
     public GameObject life1, life2, life3;
     // public Image background;
@@ -27,7 +28,7 @@ public class UiManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+	
 	}
 	
 	// Update is called once per frame
@@ -67,6 +68,8 @@ public class UiManager : MonoBehaviour {
         PauseButton.SetActive(false);
         Time.timeScale = 0;
         PausePanel.SetActive(true);
+        
+
     }
     public void PlayPausedGame() {
         PauseButton.SetActive(true);
