@@ -60,6 +60,9 @@ public class UiManager : MonoBehaviour {
     {
         Application.Quit();
     }
+    public void MainMenu() {
+        SceneManager.LoadScene("Menu");
+    }
     public void PauseGame() {
         PauseButton.SetActive(false);
         Time.timeScale = 0;
