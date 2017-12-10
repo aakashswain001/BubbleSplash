@@ -7,7 +7,6 @@ public class ScoreManager : MonoBehaviour {
     public static ScoreManager instance;
     private float score;
     public float Score;
-    public bool isHighScore;
     private void Awake()
     {
         if(instance == null)
@@ -19,8 +18,7 @@ public class ScoreManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         score = 0;
-        isHighScore = false;
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -35,16 +33,19 @@ public class ScoreManager : MonoBehaviour {
                 if (Score > PlayerPrefs.GetInt("HighScore0"))
                 {
                     PlayerPrefs.SetInt("HighScore0", (int)Score);
-                    isHighScore = true;
+                    HighScore();
                 }
             }
             else {
                 PlayerPrefs.SetInt("HighScore0", (int)Score);
-                isHighScore = true;
+                HighScore();
             }
         }
     }
     public void incrementScore() {
         score = score + 2;
+    }
+    public void HighScore() {
+        UiManager.instance.HighScore();
     }
 }

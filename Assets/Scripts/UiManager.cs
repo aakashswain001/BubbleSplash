@@ -42,11 +42,11 @@ public class UiManager : MonoBehaviour {
         PauseButton.SetActive(false);
         GameOverPanel.SetActive(true);
         GameoverScoreText.GetComponent<Text>().text = ScoreManager.instance.Score.ToString();
-        if (ScoreManager.instance.isHighScore) {
-            NewHighscoreText.SetActive(true);
-        }
-        // background.SetLayoutDirty();
     }
+    public void HighScore() {
+        NewHighscoreText.SetActive(true);
+    }
+
     public void Replay()
     {
         if (Time.timeScale == 0) {
@@ -59,6 +59,9 @@ public class UiManager : MonoBehaviour {
     public void OnApplicationQuit()
     {
         Application.Quit();
+    }
+    public void MainMenu() {
+        SceneManager.LoadScene("Menu");
     }
     public void PauseGame() {
         PauseButton.SetActive(false);

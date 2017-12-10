@@ -32,7 +32,11 @@ public class HandTouch : MonoBehaviour {
     {
         if (col.gameObject.tag == "Ball")
         {
-            Destroy(col.gameObject);
+            col.gameObject.GetComponent<Animator>().Play("Bubble_01_Explosion");
+            float time = col.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
+            Collider2D collider = col.gameObject.GetComponent<Collider2D>();
+            Destroy(collider);
+            Destroy(col.gameObject,time);
         }
         ScoreManager.instance.incrementScore();
     }
