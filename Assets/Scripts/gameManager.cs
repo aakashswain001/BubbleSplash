@@ -23,10 +23,11 @@ public class gameManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         gameOver = false;
-	}
+        //UiManager.instance.instructions();
+    }
     public void gameStart()
     {
-        GameObject.Find("BubbleSpawner").GetComponent<BubbleSpawner>().StartSpawingBalls();
+       GameObject.Find("BubbleSpawner").GetComponent<BubbleSpawner>().StartSpawingBalls();
     }
 	
 	// Update is called once per frame

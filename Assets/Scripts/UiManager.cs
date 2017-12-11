@@ -11,6 +11,7 @@ public class UiManager : MonoBehaviour {
     public GameObject PausePanel;
     public GameObject PauseButton;
     public GameObject GameoverScoreText, NewHighscoreText;
+    //public GameObject instructionPanel;
    
 
     public GameObject life1, life2, life3;
@@ -47,6 +48,7 @@ public class UiManager : MonoBehaviour {
     public void HighScore() {
         NewHighscoreText.SetActive(true);
     }
+    
 
     public void Replay()
     {
@@ -102,4 +104,8 @@ public class UiManager : MonoBehaviour {
             life3.SetActive(false);
         }
     }
+   // public void instructions()
+   // {
+    //    instructionPanel.SetActive(true);
+    //}
 }
