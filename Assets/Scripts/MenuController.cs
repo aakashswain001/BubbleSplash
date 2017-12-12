@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
-   
+    public GameObject settingPanel;
 	// Use this for initialization
 	void Start () {
 		
@@ -15,6 +15,12 @@ public class MenuController : MonoBehaviour {
 
     }
      public void StartGame() {
+       
         SceneManager.LoadScene("BubbleSplash");
+    }
+    public void Settings()
+    {
+        settingPanel.SetActive(true);
+
     }
 }

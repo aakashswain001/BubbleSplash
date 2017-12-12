@@ -10,6 +10,7 @@ public class BallController : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
 
         MoveBall();
+        
     }
 
     // Update is called once per frame
@@ -20,7 +21,7 @@ public class BallController : MonoBehaviour {
     {
         if (!gameManager.instance.gameOver) {
             rb.velocity = new Vector2(0, -speed);
-        }
+            }
     }
     public void OnCollisionEnter2D(Collision2D col)
     {

@@ -36,6 +36,7 @@ public class HandTouch : MonoBehaviour {
             float time = col.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
             Collider2D collider = col.gameObject.GetComponent<Collider2D>();
             Destroy(collider);
+            AudioManager.instance.Play("bubblepop");
             Destroy(col.gameObject,time);
         }
         ScoreManager.instance.incrementScore();
