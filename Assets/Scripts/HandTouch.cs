@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HandTouch : MonoBehaviour {
+    
 
 	// Use this for initialization
 	void Start () {
@@ -43,8 +44,9 @@ public class HandTouch : MonoBehaviour {
             }
             Destroy(col.gameObject,time);
         }
-        else if(col.gameObject.tag == "Bomb") {
-            Destroy(col.gameObject);
+         if(col.gameObject.tag == "Bomb")
+        {   col.gameObject.GetComponent<Animator>().Play("bomb explosion");
+            Destroy(col.gameObject,1f);
             gameManager.instance.GameOver();
         }
 

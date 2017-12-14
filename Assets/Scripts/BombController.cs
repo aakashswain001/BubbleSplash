@@ -25,7 +25,7 @@ public class BombController : MonoBehaviour
     void MoveBall()
     {
         if (!gameManager.instance.gameOver)
-        {
+        {   
             rb.velocity = new Vector2(0, -speed);
         }
     }
