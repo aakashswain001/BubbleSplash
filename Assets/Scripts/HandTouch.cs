@@ -48,8 +48,10 @@ public class HandTouch : MonoBehaviour {
         {
             col.gameObject.GetComponent<Animator>().Play("bomb explosion");
             Destroy(col.gameObject,1f);
-            gameManager.instance.GameOver();
+            Invoke("GameOver", 0.5f);
         }
-
+    }
+    void GameOver() {
+        gameManager.instance.GameOver();
     }
 }
