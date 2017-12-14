@@ -52,7 +52,10 @@ public class UiManager : MonoBehaviour {
 
     public void Replay()
     {
-        AudioManager.instance.PlayButton("buttonclick");
+        if (AudioManager.instance.sfx == true)
+        {
+            AudioManager.instance.PlayButton("buttonclick");
+        }
         if (Time.timeScale == 0) {
             Time.timeScale = 1;
         }
@@ -62,7 +65,10 @@ public class UiManager : MonoBehaviour {
     }
     public void OnApplicationQuit()
     {
-        AudioManager.instance.PlayButton("buttonclick");
+        if (AudioManager.instance.sfx == true)
+        {
+            AudioManager.instance.PlayButton("buttonclick");
+        }
         Application.Quit();
     }
     public void MainMenu() {
@@ -73,8 +79,14 @@ public class UiManager : MonoBehaviour {
         SceneManager.LoadScene("Menu");
     }
     public void PauseGame() {
-        AudioManager.instance.PlayButton("buttonclick");
-        AudioManager.instance.Pause("game");
+        if (AudioManager.instance.sfx == true)
+        {
+            AudioManager.instance.PlayButton("buttonclick");
+        }
+        if (AudioManager.instance.background == true)
+        {
+            AudioManager.instance.Pause("game");
+        }
         PauseButton.SetActive(false);
         Time.timeScale = 0;
         PausePanel.SetActive(true);
@@ -82,8 +94,14 @@ public class UiManager : MonoBehaviour {
 
     }
     public void PlayPausedGame() {
-        AudioManager.instance.PlayButton("buttonclick");
-        AudioManager.instance.ResumeAudio("game");
+        if (AudioManager.instance.sfx == true)
+        {
+            AudioManager.instance.PlayButton("buttonclick");
+        }
+        if (AudioManager.instance.background == true)
+        {
+            AudioManager.instance.ResumeAudio("game");
+        }
         PauseButton.SetActive(true);
         Time.timeScale = 1;
         PausePanel.SetActive(false);

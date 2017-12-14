@@ -6,6 +6,8 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour {
     public  static AudioManager instance;
+    public bool background;
+    public bool sfx;
 
     public sound[] sounds;
 
