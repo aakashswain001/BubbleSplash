@@ -45,10 +45,16 @@ public class HandTouch : MonoBehaviour {
             Destroy(col.gameObject,time);
         }
          if(col.gameObject.tag == "Bomb")
-        {   col.gameObject.GetComponent<Animator>().Play("bomb explosion");
-            Destroy(col.gameObject,1f);
-            gameManager.instance.GameOver();
+        {
+            col.gameObject.GetComponent<Animator>().Play("bomb explosion");
+            col.gameObject.GetComponent<BombController>().setZeroSpeed();
+            float time = col.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
+            Destroy(col.gameObject,time);
+            Invoke("gameOver", time/2);
         }
 
+    }
+    void gameOver() {
+        gameManager.instance.GameOver();
     }
 }
