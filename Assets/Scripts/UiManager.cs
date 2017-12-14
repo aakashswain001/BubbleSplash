@@ -66,6 +66,10 @@ public class UiManager : MonoBehaviour {
         Application.Quit();
     }
     public void MainMenu() {
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
         SceneManager.LoadScene("Menu");
     }
     public void PauseGame() {
