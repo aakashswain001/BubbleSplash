@@ -49,8 +49,14 @@ public class gameManager : MonoBehaviour {
     public void GameOver()
     {  //stop score not added
         gameOver = true;
-        AudioManager.instance.Play("gameover");
-        AudioManager.instance.Stop("game");
+        if (AudioManager.instance.sfx == true)
+        {
+            AudioManager.instance.Play("gameover");
+        }
+        if (AudioManager.instance.background == true)
+        {
+            AudioManager.instance.Stop("game");
+        }
         GameObject.Find("BubbleSpawner").GetComponent<BubbleSpawner>().StopSpawningBalls();      
         UiManager.instance.GameOver();
     }

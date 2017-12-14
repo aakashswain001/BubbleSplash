@@ -10,7 +10,10 @@ public class BubbleSpawner : MonoBehaviour {
     void Start () {
      
         StartSpawingBalls();
-        AudioManager.instance.Play("game");
+        if (AudioManager.instance.background == true)
+        {
+            AudioManager.instance.Play("game");
+        }
         
     }
 	
