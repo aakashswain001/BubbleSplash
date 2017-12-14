@@ -18,12 +18,12 @@ public class AudioManager : MonoBehaviour {
         {
             instance = this;
         }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-        DontDestroyOnLoad(gameObject);
+     //   else
+     //   {
+     //       Destroy(gameObject);
+     //       return;
+     //   }
+    //    DontDestroyOnLoad(gameObject);
 
         foreach(sound s in sounds)
         {
@@ -33,6 +33,20 @@ public class AudioManager : MonoBehaviour {
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+        }
+        if (PlayerPrefs.GetInt("sound") == 0)
+        {
+            background = true;
+        }
+        else {
+            background = false;
+        }
+        if (PlayerPrefs.GetInt("sfx") == 0)
+        {
+            sfx = true;
+        }
+        else {
+            sfx = false;
         }
     }
 
@@ -70,8 +84,7 @@ public class AudioManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-	
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
