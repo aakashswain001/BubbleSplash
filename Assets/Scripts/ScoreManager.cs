@@ -43,7 +43,7 @@ public class ScoreManager : MonoBehaviour {
         }
     }
     public void incrementScore() {
-        score = score + 2;
+        score = score + 1;
     }
     public void HighScore() {
         UiManager.instance.HighScore();
