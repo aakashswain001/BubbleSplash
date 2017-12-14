@@ -54,4 +54,7 @@ public class BombController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void setZeroSpeed() {
+        speed = 0;
+    }
 }
