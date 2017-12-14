@@ -36,12 +36,17 @@ public class HandTouch : MonoBehaviour {
             float time = col.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
             Collider2D collider = col.gameObject.GetComponent<Collider2D>();
             Destroy(collider);
+            ScoreManager.instance.incrementScore();
             if (AudioManager.instance.sfx == true)
             {
                 AudioManager.instance.Play("bubblepop");
             }
             Destroy(col.gameObject,time);
         }
-        ScoreManager.instance.incrementScore();
+        else if(col.gameObject.tag == "Bomb") {
+            Destroy(col.gameObject);
+            gameManager.instance.GameOver();
+        }
+
     }
 }

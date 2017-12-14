@@ -5,17 +5,18 @@ using UnityEngine.SceneManagement;
 public class BallController : MonoBehaviour {
     Rigidbody2D rb;
     float speed=2;
+    int difficulty = 1;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
-
+        setSpeed();
         MoveBall();
         
     }
 
     // Update is called once per frame
     void Update () {
-	
+	    
 	}
     void MoveBall()
     {
@@ -42,4 +43,18 @@ public class BallController : MonoBehaviour {
            
     }
 }
+    void setSpeed() {
+        difficulty = DifficultyManager.instance.difficulty;
+        if (difficulty == 1)
+        {
+            speed = Random.Range(2, 3);
+        }
+        else if (difficulty <= 3)
+        {
+            speed = Random.Range(3, 4);
+        }
+        else {
+            speed = 3 + Random.Range(1, 4);
+        }
+    }
 }
