@@ -8,15 +8,15 @@ public class gameManager : MonoBehaviour {
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+       // DontDestroyOnLoad(this.gameObject);
         if (instance == null)
         {
             instance = this;
         }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+       // else
+       // {
+       //     Destroy(this.gameObject);
+       // }
     }
    
 
