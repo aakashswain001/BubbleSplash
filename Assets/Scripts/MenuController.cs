@@ -27,18 +27,27 @@ public class MenuController : MonoBehaviour {
           sfx = PlayerPrefs.GetInt("sfx");
         }
         UpdateSettingsPanel();
-	}
+
+        //start backgound music
+        if (AudioManager.instance.background == true)
+        {
+            AudioManager.instance.Play("menu");
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
     }
      public void StartGame() {
-       
         SceneManager.LoadScene("BubbleSplash");
     }
     public void Settings()
     {
+        if (AudioManager.instance.sfx == true)
+        {
+            AudioManager.instance.PlayButton("buttonclick");
+        }
         if (!settingState)
         {
             settingPanel.SetActive(true);
@@ -70,24 +79,73 @@ public class MenuController : MonoBehaviour {
         }
     }
     public void soundOn() {
+        if (AudioManager.instance.sfx == true)
+        {
+            AudioManager.instance.PlayButton("buttonclick");
+        }
         //In sound On button click we will off the sound
         sound = 1;
         PlayerPrefs.SetInt("sound", 1);
+        AudioManager.instance.background = false;
         UpdateSettingsPanel();
+
+        if (AudioManager.instance.background == true)
+        {
+            AudioManager.instance.Play("menu");
+        }
+        else {
+            AudioManager.instance.Stop("menu");
+        }
     }
     public void soundOff() {
+        if (AudioManager.instance.sfx == true)
+        {
+            AudioManager.instance.PlayButton("buttonclick");
+        }
         sound = 0;
         PlayerPrefs.SetInt("sound", 0);
+        AudioManager.instance.background = true;
         UpdateSettingsPanel();
+
+        if (AudioManager.instance.background == true)
+        {
+            AudioManager.instance.Play("menu");
+        }
+        else
+        {
+            AudioManager.instance.Stop("menu");
+        }
     }
     public void sfxOn() {
+        if (AudioManager.instance.sfx == true)
+        {
+            AudioManager.instance.PlayButton("buttonclick");
+        }
         sfx = 1;
         PlayerPrefs.SetInt("sfx", 1);
+        AudioManager.instance.sfx = false;
         UpdateSettingsPanel();
     }
     public void sfxOff() {
+        if (AudioManager.instance.sfx == true)
+        {
+            AudioManager.instance.PlayButton("buttonclick");
+        }
         sfx = 0;
         PlayerPrefs.SetInt("sfx", 0);
+        AudioManager.instance.sfx = true;
         UpdateSettingsPanel();
+    }
+    public void Leaderboards() {
+        if (AudioManager.instance.sfx == true)
+        {
+            AudioManager.instance.PlayButton("buttonclick");
+        }
+    }
+    public void Achievements() {
+        if (AudioManager.instance.sfx == true)
+        {
+            AudioManager.instance.PlayButton("buttonclick");
+        }
     }
 }
