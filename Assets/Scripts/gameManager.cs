@@ -53,6 +53,6 @@ public class gameManager : MonoBehaviour {
         }
         GameObject.Find("BubbleSpawner").GetComponent<BubbleSpawner>().StopSpawningBalls();      
         UiManager.instance.GameOver();
-        LeaderboardsManager.instance.AddScoreToLeaderboards();
+        LeaderboardsManager1.instance.AddScoreToLeaderboards();
     }
 }
