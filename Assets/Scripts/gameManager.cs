@@ -8,14 +8,9 @@ public class gameManager : MonoBehaviour {
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
         if (instance == null)
         {
             instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
         }
     }
    
@@ -23,7 +18,6 @@ public class gameManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         gameOver = false;
-        //UiManager.instance.instructions();
     }
     public void gameStart()
     {
