@@ -141,6 +141,7 @@ public class MenuController : MonoBehaviour {
         {
             AudioManager.instance.PlayButton("buttonclick");
         }
+        LeaderboardsManager.instance.ShowLeaderboards();
     }
     public void Achievements() {
         if (AudioManager.instance.sfx == true)
