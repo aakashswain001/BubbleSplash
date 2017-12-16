@@ -41,6 +41,10 @@ public class UiManager : MonoBehaviour {
     }
     public void GameOver()
     {
+        life1.SetActive(false);
+        life2.SetActive(false);
+        life3.SetActive(false);
+
         Monstor();
         scoreText.gameObject.SetActive(false);
         PauseButton.SetActive(false);
