@@ -26,6 +26,7 @@ public class ScoreManager : MonoBehaviour {
         {
             score += Time.deltaTime;
             Score = (int)score + 0;
+            AchievementManager.instance.CheckAchievement();
         }
         else {
             if (PlayerPrefs.HasKey("HighScore0"))

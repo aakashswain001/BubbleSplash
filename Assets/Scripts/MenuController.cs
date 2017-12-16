@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
-    public GameObject settingPanel,soundON,soundOFF,sfxON,sfxOFF;
+    public GameObject settingPanel,soundON,soundOFF,sfxON,sfxOFF,helpPanel;
+    public GameObject help,bottom,settings,gamename;
     public int sound=0, sfx=0;
     bool settingState = false;
-	// Use this for initialization
+   // Use this for initialization
 	void Start () {
 
 
@@ -148,5 +149,28 @@ public class MenuController : MonoBehaviour {
         {
             AudioManager.instance.PlayButton("buttonclick");
         }
+        AchievementManager.instance.ShowAchievement();
+    }
+    public void Help() {
+        if (AudioManager.instance.sfx == true)
+        {
+            AudioManager.instance.PlayButton("buttonclick");
+        }
+        helpPanel.SetActive(true);
+        help.SetActive(false);
+        gamename.SetActive(false);
+        settings.SetActive(false);
+        bottom.SetActive(false);
+    }
+    public void HelpTick() {
+        if (AudioManager.instance.sfx == true)
+        {
+            AudioManager.instance.PlayButton("buttonclick");
+        }
+        helpPanel.SetActive(false);
+        help.SetActive(true);
+        gamename.SetActive(true);
+        settings.SetActive(true);
+        bottom.SetActive(true);
     }
 }
