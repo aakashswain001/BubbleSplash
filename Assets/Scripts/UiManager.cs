@@ -11,7 +11,6 @@ public class UiManager : MonoBehaviour {
     public GameObject PausePanel;
     public GameObject PauseButton;
     public GameObject GameoverScoreText, NewHighscoreText;
-    public GameObject monstorPanel;
     //public GameObject instructionPanel;
    
 
@@ -45,7 +44,6 @@ public class UiManager : MonoBehaviour {
         life2.SetActive(false);
         life3.SetActive(false);
 
-        Monstor();
         scoreText.gameObject.SetActive(false);
         PauseButton.SetActive(false);
         GameOverPanel.SetActive(true);
@@ -137,12 +135,5 @@ public class UiManager : MonoBehaviour {
             life2.SetActive(false);
             life3.SetActive(false);
         }
-    }
-    // public void instructions()
-    // {
-    //    instructionPanel.SetActive(true);
-    //}
-    void Monstor() {
-        monstorPanel.gameObject.SetActive(false);
     }
 }

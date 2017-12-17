@@ -16,7 +16,8 @@ public class LeaderboardsManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         PlayGamesPlatform.Activate();
-        Login();
+        // Login();
+        Invoke("Login", 1f);
 	}
 	
 	// Update is called once per frame
@@ -26,6 +27,10 @@ public class LeaderboardsManager : MonoBehaviour {
     void Login() {
         Social.localUser.Authenticate((bool success) => {
             // handle success or failure
+            if (PlayerPrefs.HasKey("HighScore0"))
+            {
+                Social.ReportScore(PlayerPrefs.GetInt("HighScore0"), Leaderboards.leaderboard_leaderboards, (bool success0) => { });
+            }
         });
     }
     public void ShowLeaderboards() {
