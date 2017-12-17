@@ -47,6 +47,10 @@ public class HandTouch : MonoBehaviour {
          if(col.gameObject.tag == "Bomb")
         {
             col.gameObject.GetComponent<Animator>().Play("bomb explosion");
+            if (AudioManager.instance.sfx == true)
+            {
+                AudioManager.instance.Play("bomb");
+            }
             Destroy(col.gameObject,1f);
             Invoke("GameOver", 0.5f);
         }
