@@ -44,8 +44,5 @@ public class LeaderboardsManager1 : MonoBehaviour {
                 // handle success or failure
             });
         }
-        else {
-         //   Login();
-        }
     }
 }
