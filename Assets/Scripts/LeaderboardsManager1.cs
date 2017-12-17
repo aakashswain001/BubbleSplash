@@ -45,7 +45,7 @@ public class LeaderboardsManager1 : MonoBehaviour {
             });
         }
         else {
-            Login();
+         //   Login();
         }
     }
 }
