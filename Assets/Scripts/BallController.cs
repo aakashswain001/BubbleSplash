@@ -37,11 +37,11 @@ public class BallController : MonoBehaviour {
     {
         if (col.gameObject.tag == "BelowBar" && !gameManager.instance.gameOver)
         {
+            
             Destroy(gameObject);
             //  gameManager.instance.GameOver();
             LifeManager.instance.decrementLife();
-           
-    }
+        }
 }
     void setSpeed() {
         difficulty = DifficultyManager.instance.difficulty;
