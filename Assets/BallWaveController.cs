@@ -1,28 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-public class BallController : MonoBehaviour {
+
+public class BallWaveController : MonoBehaviour {
+
     Rigidbody2D rb;
-    float speed=2,xSpeed;
+    float speed = 2, xSpeed;
     int difficulty = 1;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         rb = GetComponent<Rigidbody2D>();
-             setSpeed();
+        setSpeed();
         MoveBall();
-        
+
     }
 
     // Update is called once per frame
-    void Update () {
-	    
-	}
+    void Update()
+    {
+
+    }
     void MoveBall()
     {
-        if (!gameManager.instance.gameOver) {
+        if (!gameManager.instance.gameOver)
+        {
             rb.velocity = new Vector2(xSpeed, -speed);
-            }
+        }
     }
     public void OnCollisionEnter2D(Collision2D col)
     {
@@ -30,7 +34,8 @@ public class BallController : MonoBehaviour {
         {
             LifeManager.instance.decrementLife();
         }
-        else if (col.gameObject.tag == "wall") {
+        else if (col.gameObject.tag == "wall")
+        {
             xSpeed = -xSpeed;
             MoveBall();
         }
@@ -40,7 +45,7 @@ public class BallController : MonoBehaviour {
     {
         if (col.gameObject.tag == "BelowBar" && !gameManager.instance.gameOver)
         {
-            
+
             Destroy(gameObject);
             //  gameManager.instance.GameOver();
             LifeManager.instance.decrementLife();
@@ -52,39 +57,29 @@ public class BallController : MonoBehaviour {
             MoveBall();
         }
     }
-    void setSpeed() {
+    void setSpeed()
+    {
         difficulty = DifficultyManager.instance.difficulty;
-        if (difficulty == 1)
+        if (difficulty < 3)
         {
-            speed = 2 + Random.Range(1, 3);
+            speed = 3 + Random.Range(0,1) ;
             xSpeed = 0;
         }
-        else if (difficulty == 2)
+        else if (difficulty < 5)
         {
-            int x = Random.Range(0, 5);
-            if (x > 3) {
-                xSpeed = Random.Range(-3, 3);
-            }
-            speed = 3 + Random.Range(0, 3);
+           
+                xSpeed = 0;
+          
+            speed = 3 + Random.Range(0,1);
         }
-        else if (difficulty == 3) {
-            int x = Random.Range(0, 5);
-            if (x > 3)
-            {
-                xSpeed = Random.Range(-5, 5);
-            }
-            speed =  4 + Random.Range(0, 3);
-        }
-        else
+        else 
         {
             int x = Random.Range(0, 5);
             if (x > 3)
             {
-                xSpeed = Random.Range(-8, 8);
+                xSpeed = Random.Range(-2, 2);
             }
-
-            speed = 5 + Random.Range(0, 3);
+            speed = 3 + Random.Range(0,2);
         }
     }
-  
 }
