@@ -46,6 +46,9 @@ public class ScoreManager : MonoBehaviour {
     public void incrementScore() {
         score = score + 1;
     }
+    public void specialPoints() {
+        score = score + 5;
+    }
     public void HighScore() {
         UiManager.instance.HighScore();
     }
