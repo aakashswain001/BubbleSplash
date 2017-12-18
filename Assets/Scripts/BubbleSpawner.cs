@@ -43,10 +43,19 @@ public class BubbleSpawner : MonoBehaviour {
         else
         {
             Spawn();
-            int bomb = Random.Range(1, 5);
-            if (bomb == 1) {
+            int bomb = Random.Range(1, 20);
+            if (bomb < 3)
+            {
                 Invoke("SpawnBomb", 0.1f);
             }
+            else if (bomb < 5)
+            {
+                Invoke("SpawnStickBomb", 0.1f);
+            }
+           else if (bomb == 19) {
+                Invoke("HappySpawn", 0.1f);
+            }
+           
         }
     }
     void Spawn() {
@@ -54,5 +63,11 @@ public class BubbleSpawner : MonoBehaviour {
     }
     void SpawnBomb() {
         Instantiate(balls[1], new Vector3(Random.Range(-maxXpos, maxXpos), transform.position.y, 0), Quaternion.identity);
+    }
+    void SpawnStickBomb() {
+        Instantiate(balls[2], new Vector3(Random.Range(-maxXpos, maxXpos), transform.position.y, 0), Quaternion.identity);
+    }
+    void HappySpawn() {
+        Instantiate(balls[3], new Vector3(Random.Range(-maxXpos, maxXpos), transform.position.y, 0), Quaternion.identity);
     }
 }

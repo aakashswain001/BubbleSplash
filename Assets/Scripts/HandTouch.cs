@@ -54,6 +54,28 @@ public class HandTouch : MonoBehaviour {
             Destroy(col.gameObject,1f);
             Invoke("GameOver", 0.5f);
         }
+        if (col.gameObject.tag == "stickbomb")
+        {
+           col.gameObject.GetComponent<Animator>().Play("bomb explosion");
+            if (AudioManager.instance.sfx == true)
+            {
+                AudioManager.instance.Play("bomb");
+            }
+            Destroy(col.gameObject, 1f);
+            Invoke("GameOver", 0.5f);
+        }
+        if (col.gameObject.tag == "happy")
+        {
+            col.gameObject.GetComponent<Animator>().Play("happy dead");
+            if (AudioManager.instance.sfx == true)
+            {
+               AudioManager.instance.Play("happy object");
+            }
+            Collider2D collider = col.gameObject.GetComponent<Collider2D>();
+            Destroy(collider);
+            ScoreManager.instance.specialPoints();
+            col.gameObject.GetComponent<HappyController>().setHighSpeed();
+        }
     }
     void GameOver() {
         gameManager.instance.GameOver();
