@@ -76,6 +76,15 @@ public class HandTouch : MonoBehaviour {
             ScoreManager.instance.specialPoints();
             col.gameObject.GetComponent<HappyController>().setHighSpeed();
         }
+        if (col.gameObject.tag == "life")
+        {
+            if (AudioManager.instance.sfx == true)
+            {
+                AudioManager.instance.Play("happy object");
+            }
+            Destroy(col.gameObject);
+            LifeManager.instance.incrementLife();
+        }
     }
     void GameOver() {
         gameManager.instance.GameOver();
