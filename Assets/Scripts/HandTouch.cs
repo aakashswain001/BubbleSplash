@@ -80,7 +80,7 @@ public class HandTouch : MonoBehaviour {
         {
             if (AudioManager.instance.sfx == true)
             {
-                AudioManager.instance.Play("happy object");
+                AudioManager.instance.Play("life");
             }
             Destroy(col.gameObject);
             LifeManager.instance.incrementLife();
