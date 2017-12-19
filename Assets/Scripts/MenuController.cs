@@ -38,7 +38,13 @@ public class MenuController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                Application.Quit();
+            }
+        }
     }
      public void StartGame() {
         SceneManager.LoadScene("BubbleSplash");
