@@ -24,8 +24,9 @@ public class ScoreManager : MonoBehaviour {
 	void Update () {
         if (!gameManager.instance.gameOver)
         {
+            int multiplier = ScoreMultiplier.instance.multiplier;
             score += Time.deltaTime;
-            Score = (int)score + 0;
+            Score = (int)score;
             AchievementManager.instance.CheckAchievement();
         }
         else {
@@ -44,10 +45,10 @@ public class ScoreManager : MonoBehaviour {
         }
     }
     public void incrementScore() {
-        score = score + 1;
+        score = score + ScoreMultiplier.instance.multiplier;
     }
     public void specialPoints() {
-        score = score + 5;
+        score = score + 5* ScoreMultiplier.instance.multiplier;
     }
     public void HighScore() {
         UiManager.instance.HighScore();

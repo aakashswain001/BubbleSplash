@@ -22,7 +22,6 @@ public class gameManager : MonoBehaviour {
     public void gameStart()
     {
        GameObject.Find("BubbleSpawner").GetComponent<BubbleSpawner>().StartSpawingBalls();
-       
     }
 	
 	// Update is called once per frame
@@ -43,6 +42,7 @@ public class gameManager : MonoBehaviour {
     public void GameOver()
     {  //stop score not added
         gameOver = true;
+        ScoreMultiplier.instance.GameOver();
         if (AudioManager.instance.sfx == true)
         {
             AudioManager.instance.Play("gameover");
