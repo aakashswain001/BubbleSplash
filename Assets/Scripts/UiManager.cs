@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour {
     public static UiManager instance;
-    public Text scoreText;
+    public Text scoreText,multiplierText;
     public GameObject GameOverPanel;
     public GameObject PausePanel;
     public GameObject PauseButton;
@@ -36,6 +36,7 @@ public class UiManager : MonoBehaviour {
 	void Update () {
         if (!gameManager.instance.gameOver) {
             scoreText.text = ScoreManager.instance.Score.ToString();
+            multiplierText.text = "x"+ScoreMultiplier.instance.multiplier.ToString();
         }
     }
     public void GameOver()
